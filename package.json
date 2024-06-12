@@ -14,8 +14,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
     "pinia": "^2.1.7",
-    "vue": "^3.4.21",
+    "vue": "^3.4.27",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
@@ -31,6 +33,7 @@
     "prettier": "^3.2.5",
     "start-server-and-test": "^2.0.3",
     "vite": "^5.2.8",
+    "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.4.0"
   }
 }
