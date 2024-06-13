@@ -32,6 +32,10 @@
   </nav>
 </template>
 
-<script></script>
+<script>
+export default {
+  name: 'my-navbar'
+}
+</script>
 
 <style></style>
