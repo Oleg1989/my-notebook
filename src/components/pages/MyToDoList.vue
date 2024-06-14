@@ -1,6 +1,5 @@
-u
 <template>
-  <div class="container">
+  <div class="container text-secondary">
     <div class="row">
       <div class="col">
         <h1 class="text-center">My to-do list!</h1>

@@ -3,11 +3,11 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-primary btn-lg"
+      class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
     >
-      New to-do
+      New plan
     </button>
 
     <!-- Modal -->
@@ -21,7 +21,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New to-do</h5>
+            <h5 class="modal-title" id="exampleModalLabel">New Plan</h5>
             <button
               type="button"
               class="btn-close"
@@ -30,16 +30,22 @@
             ></button>
           </div>
           <div class="modal-body">
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Description to-do"
-              aria-label="default input example"
-            />
+            <div class="mb-3">
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="floatingDateTimeLocal"
+                placeholder="Datetime local"
+              />
+            </div>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingPlan" placeholder="Plan" />
+              <label for="floatingPlan">Description plan</label>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add to-do</button>
+            <button type="button" class="btn btn-primary">Add plan</button>
           </div>
         </div>
       </div>
@@ -48,7 +54,7 @@
 </template>
 <script>
 export default {
-  name: 'my-modal-form-list'
+  name: 'my-modal-form-plan'
 }
 </script>
 <style></style>
