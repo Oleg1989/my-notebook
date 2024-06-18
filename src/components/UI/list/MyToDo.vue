@@ -5,8 +5,13 @@
         <div class="row align-items-center">
           <div class="col-12">
             <div class="form-check align-items-center">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-              <span class="text-decoration-line-through">Buy some bread</span>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="flexCheckDefault"
+                :checked="isChecked"
+              />
+              <span :class="isChecked ? 'text-decoration-line-through' : ''">{{ title }}</span>
             </div>
           </div>
         </div>
@@ -20,7 +25,11 @@
 </template>
 <script>
 export default {
-  name: 'my-to-do'
+  name: 'my-to-do',
+  props: {
+    title: String,
+    isChecked: Boolean
+  }
 }
 </script>
 <style></style>

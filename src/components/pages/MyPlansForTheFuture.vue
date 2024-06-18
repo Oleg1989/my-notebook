@@ -7,7 +7,7 @@
     </div>
     <div class="row align-items-center">
       <div class="col-8">
-        <h2>Total my plans for the future:</h2>
+        <h2>Total my plans for the future: {{ myNotebookStore.myPlans.length }}</h2>
       </div>
       <div class="col-4 d-flex justify-content-end">
         <my-modal-form-plan></my-modal-form-plan>
@@ -15,12 +15,19 @@
     </div>
     <div class="card mt-4">
       <ul class="list-group list-group-flush">
-        <my-plan></my-plan>
+        <my-plan
+          v-for="myPlan of myNotebookStore.myPlans"
+          :key="myPlan.id"
+          :title="myPlan.title"
+          :date="myPlan.date"
+          :is-checked="myPlan.isChecked"
+        ></my-plan>
       </ul>
     </div>
   </div>
 </template>
-<script>
-export default {}
+<script setup>
+import { useMyNotebookStore } from '@/stores/myNotebookStore'
+const myNotebookStore = useMyNotebookStore()
 </script>
 <style></style>
