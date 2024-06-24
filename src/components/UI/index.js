@@ -3,8 +3,10 @@ import MyModalFormList from '@/components/UI/list/MyModalFormList.vue'
 import MyToDo from '@/components/UI/list/MyToDo.vue'
 import MyModalFormNote from '@/components/UI/note/MyModalFormNote.vue'
 import MyNote from '@/components/UI/note/MyNote.vue'
-import MyModalFormPlan from '@/components/UI/plan/MyModalFormPlan.vue'
-import MyPlan from '@/components/UI/plan/MyPlan.vue'
+import MyModalFormGoal from '@/components/UI/goal/MyModalFormGoal.vue'
+import MyGoal from '@/components/UI/goal/MyGoal.vue'
+import MyDeleteButton from '@/components/UI/MyDeleteButton.vue'
+import MyChangeButton from '@/components/UI/MyChangeButton.vue'
 
 export default {
   MyNavbar,
@@ -12,6 +14,8 @@ export default {
   MyToDo,
   MyModalFormNote,
   MyNote,
-  MyModalFormPlan,
-  MyPlan
+  MyModalFormGoal,
+  MyGoal,
+  MyDeleteButton,
+  MyChangeButton
 }

@@ -28,7 +28,7 @@
 </template>
 <script>
 export default {
-  name: 'my-plan',
+  name: 'my-goal',
   props: {
     title: String,
     date: String,

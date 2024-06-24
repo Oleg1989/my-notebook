@@ -3,32 +3,30 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-success mx-2 btn-sm"
       data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
+      data-bs-target="#changeModal"
     >
-      New to-do
+      Change
     </button>
 
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="changeModal"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="changeModalLabel"
       aria-hidden="true"
-      @click="() => (title = '')"
     >
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New to-do</h5>
+            <h5 class="modal-title" id="changeModalLabel">{{ changeButtonTitle }}</h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-              @click="() => (title = '')"
             ></button>
           </div>
           <form class="was-validated">
@@ -49,22 +47,15 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                @click="() => (title = '')"
-              >
-                Close
-              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
                 :disabled="!title.length"
-                @click="createToDo"
+                @click="update(id)"
               >
-                Add to-do
+                Update to-do
               </button>
             </div>
           </form>
@@ -76,23 +67,29 @@
 <script>
 import { useMyToDoListsStore } from '@/stores/myToDoListsStore'
 import { ref } from 'vue'
+
 export default {
-  name: 'my-modal-form-list',
-  setup() {
+  name: 'my-change-button',
+  props: {
+    id: String,
+    changeButtonTitle: String
+  },
+  setup(props) {
     const myToDoListsStore = useMyToDoListsStore()
+    const toDo = myToDoListsStore.getToDo(props.id)
 
-    const title = ref('')
-    const showForm = ref(false)
+    const title = ref(toDo.title)
 
-    const createToDo = () => {
-      myToDoListsStore.addToDo(title.value)
+    const update = (id) => {
+      toDo.title = title.value
+      myToDoListsStore.updateToDo(id)
       title.value = ''
     }
+
     return {
       title,
       myToDoListsStore,
-      createToDo,
-      showForm
+      update
     }
   }
 }

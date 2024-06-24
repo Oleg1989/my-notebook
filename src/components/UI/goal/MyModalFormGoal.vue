@@ -7,7 +7,7 @@
       data-bs-toggle="modal"
       data-bs-target="#exampleModal"
     >
-      New plan
+      New goal
     </button>
 
     <!-- Modal -->
@@ -21,7 +21,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New Plan</h5>
+            <h5 class="modal-title" id="exampleModalLabel">New goal</h5>
             <button
               type="button"
               class="btn-close"
@@ -40,12 +40,12 @@
             </div>
             <div class="form-floating">
               <input type="text" class="form-control" id="floatingPlan" placeholder="Plan" />
-              <label for="floatingPlan">Description plan</label>
+              <label for="floatingPlan">Description goal</label>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add plan</button>
+            <button type="button" class="btn btn-primary">Add goal</button>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
 </template>
 <script>
 export default {
-  name: 'my-modal-form-plan'
+  name: 'my-modal-form-goal'
 }
 </script>
 <style></style>

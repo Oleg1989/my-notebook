@@ -24,8 +24,8 @@
             <router-link to="myNotes" class="nav-link text-uppercase">My notes</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="myPlans" class="nav-link text-uppercase"
-              >My plans for the future</router-link
+            <router-link to="myGoals" class="nav-link text-uppercase"
+              >My goals for the future</router-link
             >
           </li>
         </ul>

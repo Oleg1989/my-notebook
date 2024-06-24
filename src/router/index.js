@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MyMain from '@/components/pages/MyMain.vue'
 import MyToDoList from '@/components/pages/MyToDoList.vue'
 import MyNotes from '@/components/pages/MyNotes.vue'
-import MyPlansForTheFuture from '@/components/pages/MyPlansForTheFuture.vue'
+import MyGoalsForTheFuture from '@/components/pages/MyGoalsForTheFuture.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,9 +24,9 @@ const router = createRouter({
       component: MyNotes
     },
     {
-      path: '/myPlans',
-      name: 'plans',
-      component: MyPlansForTheFuture
+      path: '/myGoals',
+      name: 'goals',
+      component: MyGoalsForTheFuture
     }
   ]
 })

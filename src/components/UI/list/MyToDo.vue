@@ -1,5 +1,5 @@
 <template>
-  <li class="list-group-item">
+  <li class="list-group-item" :id="id">
     <div class="row align-items-center">
       <div class="col-7">
         <div class="row align-items-center">
@@ -10,6 +10,7 @@
                 type="checkbox"
                 id="flexCheckDefault"
                 :checked="isChecked"
+                @click="myToDoListsStore.checkedToDo(id)"
               />
               <span :class="isChecked ? 'text-decoration-line-through' : ''">{{ title }}</span>
             </div>
@@ -17,18 +18,27 @@
         </div>
       </div>
       <div class="col-5 d-flex justify-content-end">
-        <button type="button" class="btn btn-success mx-2 btn-sm">Change</button>
-        <button type="button" class="btn btn-danger mx-2 btn-sm">Delete</button>
+        <my-change-button :id="id" :changeButtonTitle="`Change to-do?`"></my-change-button>
+        <my-delete-button :id="id" :deleteButtonTitle="`Delete to-do?`"></my-delete-button>
       </div>
     </div>
   </li>
 </template>
 <script>
+import { useMyToDoListsStore } from '@/stores/myToDoListsStore'
+
 export default {
   name: 'my-to-do',
   props: {
+    id: String,
     title: String,
     isChecked: Boolean
+  },
+  setup() {
+    const myToDoListsStore = useMyToDoListsStore()
+    return {
+      myToDoListsStore
+    }
   }
 }
 </script>

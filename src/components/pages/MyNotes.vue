@@ -7,7 +7,7 @@
     </div>
     <div class="row align-items-center">
       <div class="col-8">
-        <h2>Total my notes: {{ myNotebookStore.myNotes.length }}</h2>
+        <h2>Total my notes: {{ myNotesStore.myNotes.length }}</h2>
       </div>
       <div class="col-4 d-flex justify-content-end">
         <my-modal-form-note></my-modal-form-note>
@@ -15,7 +15,7 @@
     </div>
     <div>
       <my-note
-        v-for="myNote of myNotebookStore.myNotes"
+        v-for="myNote of myNotesStore.myNotes"
         :key="myNote.id"
         :title="myNote.title"
         :text="myNote.text"
@@ -25,7 +25,8 @@
   </div>
 </template>
 <script setup>
-import { useMyNotebookStore } from '@/stores/myNotebookStore'
-const myNotebookStore = useMyNotebookStore()
+import { useMyNotesStore } from '@/stores/myNotesStore'
+
+const myNotesStore = useMyNotesStore()
 </script>
 <style></style>
