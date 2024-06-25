@@ -1,6 +1,6 @@
 <template>
   <div class="container text-secondary">
-    <p class="fs-1 text-center">Total my to-do to-do: {{ myToDoListsStore.myToDoLists.length }}</p>
+    <p class="fs-1 text-center">Total my to-do: {{ myToDoListsStore.myToDoLists.length }}</p>
     <p class="fs-1 text-center">Total my notes: {{ myNotesStore.myNotes.length }}</p>
     <p class="fs-1 text-center">Total my goals: {{ myGoalsStore.myGoals.length }}</p>
   </div>

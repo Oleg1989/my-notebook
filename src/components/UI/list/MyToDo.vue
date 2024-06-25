@@ -18,8 +18,16 @@
         </div>
       </div>
       <div class="col-5 d-flex justify-content-end">
-        <my-change-button :id="id" :changeButtonTitle="`Change to-do?`"></my-change-button>
-        <my-delete-button :id="id" :deleteButtonTitle="`Delete to-do?`"></my-delete-button>
+        <my-list-change-button
+          :id="id"
+          :inputTitle="title"
+          :changeButtonTitle="`Change to-do?`"
+        ></my-list-change-button>
+        <my-delete-button
+          :id="id"
+          :deleteElement="myToDoListsStore.deleteToDo"
+          :deleteButtonTitle="`Delete to-do?`"
+        ></my-delete-button>
       </div>
     </div>
   </li>

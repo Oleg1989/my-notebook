@@ -7,7 +7,7 @@
     </div>
     <div class="row align-items-center">
       <div class="col-8">
-        <h2>Total my goals for the future: {{ myGoalsStore.myGoals.length }}</h2>
+        <h2>Total my goals: {{ myGoalsStore.myGoals.length }}</h2>
       </div>
       <div class="col-4 d-flex justify-content-end">
         <my-modal-form-goal></my-modal-form-goal>

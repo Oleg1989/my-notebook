@@ -5,7 +5,7 @@
       type="button"
       class="btn btn-success mx-2 btn-sm"
       data-bs-toggle="modal"
-      data-bs-target="#changeModal"
+      :data-bs-target="'#changeModal' + id"
     >
       Change
     </button>
@@ -13,15 +13,15 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="changeModal"
+      :id="'changeModal' + id"
       tabindex="-1"
-      aria-labelledby="changeModalLabel"
+      :aria-labelledby="'changeModalLabel' + id"
       aria-hidden="true"
     >
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="changeModalLabel">{{ changeButtonTitle }}</h5>
+            <h5 class="modal-title" :id="'changeModalLabel' + id">{{ changeButtonTitle }}</h5>
             <button
               type="button"
               class="btn-close"
@@ -36,12 +36,16 @@
                   type="text"
                   v-model="title"
                   class="form-control is-invalid"
-                  id="floatingText"
+                  :id="'floatingText' + id"
                   placeholder="Text"
                   required
                 />
-                <label for="floatingText">Description to-do</label>
-                <div v-if="!title.length" id="validationServer03Feedback" class="invalid-feedback">
+                <label :for="'floatingText' + id">Description to-do</label>
+                <div
+                  v-if="!title.length"
+                  :id="'validationServer03Feedback' + id"
+                  class="invalid-feedback"
+                >
                   Please fill in the field!
                 </div>
               </div>
@@ -53,7 +57,7 @@
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
                 :disabled="!title.length"
-                @click="update(id)"
+                @click.stop="update()"
               >
                 Update to-do
               </button>
@@ -69,26 +73,27 @@ import { useMyToDoListsStore } from '@/stores/myToDoListsStore'
 import { ref } from 'vue'
 
 export default {
-  name: 'my-change-button',
+  name: 'my-list-change-button',
   props: {
     id: String,
+    inputTitle: String,
     changeButtonTitle: String
   },
   setup(props) {
     const myToDoListsStore = useMyToDoListsStore()
-    const toDo = myToDoListsStore.getToDo(props.id)
 
-    const title = ref(toDo.title)
+    const title = ref(props.inputTitle)
 
-    const update = (id) => {
-      toDo.title = title.value
-      myToDoListsStore.updateToDo(id)
-      title.value = ''
+    const update = () => {
+      const element = {
+        id: props.id,
+        title: title.value
+      }
+      myToDoListsStore.updateToDo(element)
     }
 
     return {
       title,
-      myToDoListsStore,
       update
     }
   }

@@ -5,7 +5,7 @@
       type="button"
       class="btn btn-danger mx-2 btn-sm"
       data-bs-toggle="modal"
-      data-bs-target="#deleteModal"
+      :data-bs-target="'#deleteModal' + id"
     >
       Delete
     </button>
@@ -13,15 +13,17 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="deleteModal"
+      :id="'deleteModal' + id"
       tabindex="-1"
-      aria-labelledby="deleteModalLabel"
+      :aria-labelledby="'deleteModalLabel' + id"
       aria-hidden="true"
     >
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h5 class="text-center" id="deleteModalLabel">{{ deleteButtonTitle }}</h5>
+            <h5 class="modal-title" :id="'deleteModalLabel' + id">
+              {{ deleteButtonTitle }}
+            </h5>
             <button
               type="button"
               class="btn-close"
@@ -35,7 +37,7 @@
               type="button"
               class="btn btn-danger"
               data-bs-dismiss="modal"
-              @click="myToDoListsStore.deleteToDo(id)"
+              @click="deleteElement(id)"
             >
               Delete
             </button>
@@ -46,20 +48,12 @@
   </div>
 </template>
 <script>
-import { useMyToDoListsStore } from '@/stores/myToDoListsStore'
-
 export default {
   name: 'my-delete-button',
   props: {
     id: String,
-    deleteButtonTitle: String
-  },
-  setup() {
-    const myToDoListsStore = useMyToDoListsStore()
-
-    return {
-      myToDoListsStore
-    }
+    deleteButtonTitle: String,
+    deleteElement: Function
   }
 }
 </script>

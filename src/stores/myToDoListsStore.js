@@ -38,11 +38,6 @@ export const useMyToDoListsStore = defineStore('myToDoLists', () => {
     myToDoLists.value = myToDoLists.value.filter((toDo) => toDo.id !== id)
   }
 
-  const getToDo = (id) => {
-    const toDo = myToDoLists.value.find((toDo) => toDo.id === id)
-    return toDo
-  }
-
   const updateToDo = (toDo) => {
     myToDoLists.value.forEach((item) => {
       if (item.id === toDo.id) {
@@ -51,5 +46,5 @@ export const useMyToDoListsStore = defineStore('myToDoLists', () => {
     })
   }
 
-  return { myToDoLists, addToDo, checkedToDo, deleteToDo, getToDo, updateToDo }
+  return { myToDoLists, addToDo, checkedToDo, deleteToDo, updateToDo }
 })
