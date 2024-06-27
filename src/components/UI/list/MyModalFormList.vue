@@ -5,7 +5,7 @@
       type="button"
       class="btn btn-primary"
       data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
+      data-bs-target="#modalList"
     >
       New to-do
     </button>
@@ -13,16 +13,16 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="modalList"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="modalLabelList"
       aria-hidden="true"
       @click="() => (title = '')"
     >
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New to-do</h5>
+            <h5 class="modal-title" id="ModalLabelList">New to-do</h5>
             <button
               type="button"
               class="btn-close"
@@ -82,7 +82,6 @@ export default {
     const myToDoListsStore = useMyToDoListsStore()
 
     const title = ref('')
-    const showForm = ref(false)
 
     const createToDo = () => {
       myToDoListsStore.addToDo(title.value)
@@ -91,8 +90,7 @@ export default {
     return {
       title,
       myToDoListsStore,
-      createToDo,
-      showForm
+      createToDo
     }
   }
 }

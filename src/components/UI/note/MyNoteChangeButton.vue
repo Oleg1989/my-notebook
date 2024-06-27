@@ -3,47 +3,49 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-success mx-2 btn-sm"
       data-bs-toggle="modal"
-      data-bs-target="#modalNote"
+      :data-bs-target="'#changeModal' + id"
     >
-      New note
+      Change
     </button>
 
     <!-- Modal -->
     <div
       class="modal fade"
-      id="modalNote"
+      :id="'changeModal' + id"
       tabindex="-1"
-      aria-labelledby="modalLabelNote"
+      :aria-labelledby="'changeModalLabel' + id"
       aria-hidden="true"
-      @click="reset()"
     >
-      <div class="modal-dialog modal-dialog-centered" @click.stop>
+      <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalLabelNote">New note</h5>
+            <h5 class="modal-title" :id="'changeModalLabel' + id">{{ changeButtonTitle }}</h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-              @click="reset()"
             ></button>
           </div>
           <form class="was-validated">
             <div class="modal-body">
               <div class="form-floating mb-3">
                 <input
-                  v-model="title"
                   type="text"
+                  v-model="title"
                   class="form-control is-invalid"
-                  id="floatingTitle"
-                  placeholder="Title"
+                  :id="'floatingText' + id"
+                  placeholder="Text"
                   required
                 />
-                <label for="floatingTitle">Title</label>
-                <div v-if="!title.length" id="validationServer03Feedback" class="invalid-feedback">
+                <label :for="'floatingText' + id">Title</label>
+                <div
+                  v-if="!title.length"
+                  :id="'validationServer03Feedback' + id"
+                  class="invalid-feedback"
+                >
                   Please fill in the field!
                 </div>
               </div>
@@ -52,34 +54,29 @@
                   v-model="text"
                   class="form-control is-invalid"
                   placeholder="Description note"
-                  aria-label="Description note"
-                  id="floatingTextarea2"
+                  :id="'floatingTextarea2' + id"
                   :style="text.length ? largeSize : smallSize"
                   required
                 ></textarea>
-                <label for="floatingTextarea2">Description note</label>
-                <div v-if="!text.length" id="validationServer03Feedback" class="invalid-feedback">
+                <div
+                  v-if="!text.length"
+                  :id="'validationServer03Feedback' + id"
+                  class="invalid-feedback"
+                >
                   Please fill in the field!
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                @click="reset()"
-              >
-                Close
-              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                :disabled="!title.length || !text.length"
-                @click="createNote"
+                :disabled="!title.length"
+                @click.stop="update()"
               >
-                Add note
+                Update note
               </button>
             </div>
           </form>
@@ -93,12 +90,18 @@ import { useMyNotesStore } from '@/stores/myNotesStore'
 import { ref } from 'vue'
 
 export default {
-  name: 'my-modal-form-note',
-  setup() {
+  name: 'my-note-change-button',
+  props: {
+    id: String,
+    inputTitle: String,
+    inputText: String,
+    changeButtonTitle: String
+  },
+  setup(props) {
     const myNotesStore = useMyNotesStore()
 
-    const title = ref('')
-    const text = ref('')
+    const title = ref(props.inputTitle)
+    const text = ref(props.inputText)
     const largeSize = ref({
       height: 200 + 'px'
     })
@@ -106,18 +109,13 @@ export default {
       height: 100 + 'px'
     })
 
-    const reset = () => {
-      title.value = ''
-      text.value = ''
-    }
-
-    const createNote = () => {
-      const newNote = {
+    const update = () => {
+      const element = {
+        id: props.id,
         title: title.value,
-        text: title.value
+        text: text.value
       }
-      myNotesStore.addNote(newNote)
-      reset()
+      myNotesStore.updateNote(element)
     }
 
     return {
@@ -125,9 +123,7 @@ export default {
       text,
       largeSize,
       smallSize,
-      myNotesStore,
-      createNote,
-      reset
+      update
     }
   }
 }

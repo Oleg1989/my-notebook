@@ -12,18 +12,36 @@
       <p class="card-text">{{ text }}</p>
     </div>
     <div class="d-flex justify-content-end m-2">
-      <button type="button" class="btn btn-success mx-2 btn-sm">Change</button>
-      <button type="button" class="btn btn-danger mx-2 btn-sm">Delete</button>
+      <my-note-change-button
+        :id="id"
+        :inputTitle="title"
+        :inputText="text"
+        :changeButtonTitle="`Change note?`"
+      ></my-note-change-button>
+      <my-delete-button
+        :id="id"
+        :deleteElement="myNotesStore.deleteNote"
+        :deleteButtonTitle="`Delete note?`"
+      ></my-delete-button>
     </div>
   </div>
 </template>
 <script>
+import { useMyNotesStore } from '@/stores/myNotesStore'
+
 export default {
   name: 'my-note',
   props: {
+    id: String,
     title: String,
     text: String,
     date: String
+  },
+  setup() {
+    const myNotesStore = useMyNotesStore()
+    return {
+      myNotesStore
+    }
   }
 }
 </script>

@@ -7,6 +7,7 @@ import MyModalFormGoal from '@/components/UI/goal/MyModalFormGoal.vue'
 import MyGoal from '@/components/UI/goal/MyGoal.vue'
 import MyDeleteButton from '@/components/UI/MyDeleteButton.vue'
 import MyListChangeButton from '@/components/UI/list/MyListChangeButton.vue'
+import MyNoteChangeButton from '@/components/UI/note/MyNoteChangeButton.vue'
 
 export default {
   MyNavbar,
@@ -17,5 +18,6 @@ export default {
   MyModalFormGoal,
   MyGoal,
   MyDeleteButton,
-  MyListChangeButton
+  MyListChangeButton,
+  MyNoteChangeButton
 }
