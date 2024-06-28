@@ -2,10 +2,10 @@
   <div class="card w-100 mt-4">
     <div class="card-body">
       <div class="row">
-        <div class="col-9">
+        <div class="col-7">
           <h5 class="card-title">{{ title }}</h5>
         </div>
-        <div class="col-3 text-end">
+        <div class="col-5 text-end">
           <time class="fw-lighter">{{ date }}</time>
         </div>
       </div>

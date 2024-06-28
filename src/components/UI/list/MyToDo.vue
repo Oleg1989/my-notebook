@@ -8,7 +8,7 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexCheckDefault"
+                :id="'flexCheckDefault' + id"
                 :checked="isChecked"
                 @click="myToDoListsStore.checkedToDo(id)"
               />

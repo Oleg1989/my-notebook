@@ -19,7 +19,7 @@
       aria-hidden="true"
       @click="reset()"
     >
-      <div class="modal-dialog modal-dialog-centered" @click.stop>
+      <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalLabelNote">New note</h5>

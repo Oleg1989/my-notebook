@@ -3,32 +3,30 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-success mx-2 btn-sm"
       data-bs-toggle="modal"
-      data-bs-target="#modalGoal"
+      :data-bs-target="'#changeModal' + id"
     >
-      New goal
+      Change
     </button>
 
     <!-- Modal -->
     <div
       class="modal fade"
-      id="modalGoal"
+      :id="'changeModal' + id"
       tabindex="-1"
-      aria-labelledby="modalLabelGoal"
+      :aria-labelledby="'changeModalLabel' + id"
       aria-hidden="true"
-      @click="reset"
     >
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalLabelGoal">New goal</h5>
+            <h5 class="modal-title" :id="'changeModalLabel' + id">{{ changeButtonTitle }}</h5>
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-              @click="reset"
             ></button>
           </div>
           <form class="was-validated">
@@ -38,7 +36,7 @@
                   v-model="date"
                   type="datetime-local"
                   class="form-control is-invalid"
-                  id="floatingDateTimeLocal"
+                  :id="'floatingDateTimeLocal' + id"
                   placeholder="Datetime local"
                   required
                 />
@@ -48,36 +46,33 @@
               </div>
               <div class="form-floating">
                 <input
-                  v-model="title"
                   type="text"
+                  v-model="title"
                   class="form-control is-invalid"
-                  id="floatingGoal"
-                  placeholder="Goal"
+                  :id="'floatingText' + id"
+                  placeholder="Text"
                   required
                 />
-                <label for="floatingGoal">Description goal</label>
-                <div v-if="!title.length" id="validationServer03Feedback" class="invalid-feedback">
+                <label :for="'floatingText' + id">Description goal</label>
+                <div
+                  v-if="!title.length"
+                  :id="'validationServer03Feedback' + id"
+                  class="invalid-feedback"
+                >
                   Please fill in the field!
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                @click="reset"
-              >
-                Close
-              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                :disabled="!title.length || !date.length"
-                @click="createGoal"
+                :disabled="!title.length"
+                @click.stop="update()"
               >
-                Add goal
+                Update goal
               </button>
             </div>
           </form>
@@ -91,32 +86,32 @@ import { useMyGoalsStore } from '@/stores/myGoalsStore'
 import { ref } from 'vue'
 
 export default {
-  name: 'my-modal-form-goal',
-  setup() {
+  name: 'my-goal-change-button',
+  props: {
+    id: String,
+    inputDate: String,
+    inputTitle: String,
+    changeButtonTitle: String
+  },
+  setup(props) {
     const myGoalsStore = useMyGoalsStore()
 
-    const title = ref('')
-    const date = ref('')
+    const date = ref(props.inputDate)
+    const title = ref(props.inputTitle)
 
-    const reset = () => {
-      title.value = ''
-      date.value = ''
-    }
-
-    const createGoal = () => {
-      const newGoal = {
-        title: title.value,
-        date: date.value
+    const update = () => {
+      const element = {
+        id: props.id,
+        date: date.value,
+        title: title.value
       }
-      myGoalsStore.addGoal(newGoal)
-      reset()
+      myGoalsStore.updateGoal(element)
     }
+
     return {
-      title,
       date,
-      myGoalsStore,
-      createGoal,
-      reset
+      title,
+      update
     }
   }
 }

@@ -11,15 +11,25 @@
               <input
                 class="form-check-input"
                 type="checkbox"
-                id="flexCheckDefault"
+                :id="'flexCheckDefault' + id"
                 :checked="isChecked"
+                @click="myGoalsStore.checkedGoal(id)"
               />
               <span :class="isChecked ? 'text-decoration-line-through' : ''">{{ title }}</span>
             </div>
           </div>
           <div class="col-5 d-flex justify-content-end">
-            <button type="button" class="btn btn-success mx-2 btn-sm">Change</button>
-            <button type="button" class="btn btn-danger mx-2 btn-sm">Delete</button>
+            <my-goal-change-button
+              :id="id"
+              :inputDate="date"
+              :inputTitle="title"
+              :changeButtonTitle="`Change goal?`"
+            ></my-goal-change-button>
+            <my-delete-button
+              :id="id"
+              :deleteElement="myGoalsStore.deleteGoal"
+              :deleteButtonTitle="`Delete goal?`"
+            ></my-delete-button>
           </div>
         </div>
       </div>
@@ -27,12 +37,21 @@
   </li>
 </template>
 <script>
+import { useMyGoalsStore } from '@/stores/myGoalsStore'
+
 export default {
   name: 'my-goal',
   props: {
+    id: String,
     title: String,
     date: String,
     isChecked: Boolean
+  },
+  setup() {
+    const myGoalsStore = useMyGoalsStore()
+    return {
+      myGoalsStore
+    }
   }
 }
 </script>
