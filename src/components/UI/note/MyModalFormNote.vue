@@ -114,7 +114,7 @@ export default {
     const createNote = () => {
       const newNote = {
         title: title.value,
-        text: title.value
+        text: text.value
       }
       myNotesStore.addNote(newNote)
       reset()

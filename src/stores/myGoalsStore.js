@@ -1,15 +1,18 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
+import { getData } from '@/stores/helper.js'
 
 export const useMyGoalsStore = defineStore('myGoals', () => {
-  const myGoals = ref([
-    {
-      id: '1',
-      title: 'Buy some bread',
-      date: '2025-01-22T20:56',
-      isChecked: false
-    }
-  ])
+  // const myGoals = ref([
+  //   {
+  //     id: '1',
+  //     title: 'Buy some bread',
+  //     date: '2025-01-22T20:56',
+  //     isChecked: false
+  //   }
+  // ])
+
+  const myGoals = ref(getData('goals'))
 
   // const doubleCount = computed(() => count.value * 2)
   // function increment() {
@@ -46,6 +49,14 @@ export const useMyGoalsStore = defineStore('myGoals', () => {
       }
     })
   }
+
+  watch(
+    () => myGoals,
+    (state) => {
+      localStorage.setItem('goals', JSON.stringify(state))
+    },
+    { deep: true }
+  )
 
   return { myGoals, addGoal, checkedGoal, deleteGoal, updateGoal }
 })

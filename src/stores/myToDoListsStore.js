@@ -1,19 +1,9 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
+import { getData } from '@/stores/helper.js'
 
 export const useMyToDoListsStore = defineStore('myToDoLists', () => {
-  const myToDoLists = ref([
-    {
-      id: '1',
-      title: 'Buy some bread',
-      isChecked: true
-    },
-    {
-      id: '2',
-      title: 'Buy some sugar',
-      isChecked: true
-    }
-  ])
+  const myToDoLists = ref(getData('lists'))
 
   // const getLengthMyToDoLists = computed(() => myToDoLists.value.length)
 
@@ -46,5 +36,12 @@ export const useMyToDoListsStore = defineStore('myToDoLists', () => {
     })
   }
 
+  watch(
+    () => myToDoLists,
+    (state) => {
+      localStorage.setItem('lists', JSON.stringify(state))
+    },
+    { deep: true }
+  )
   return { myToDoLists, addToDo, checkedToDo, deleteToDo, updateToDo }
 })
