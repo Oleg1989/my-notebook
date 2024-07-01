@@ -9,7 +9,7 @@
     <div class="row align-items-center">
       <div class="col-8">
         <h2 v-if="myNotesStore.myNotes.length">
-          Total my notes: {{ myNotesStore.myNotes.length }}
+          Total my notes: <span class="text-primary">{{ myNotesStore.myNotes.length }}</span>
         </h2>
       </div>
       <div class="col-4 d-flex justify-content-end">
