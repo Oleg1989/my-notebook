@@ -16,15 +16,17 @@
         <my-modal-form-note></my-modal-form-note>
       </div>
     </div>
-    <div>
-      <my-note
-        v-for="myNote of myNotesStore.myNotes"
-        :key="myNote.id"
-        :id="myNote.id"
-        :title="myNote.title"
-        :text="myNote.text"
-        :date="myNote.date"
-      ></my-note>
+    <div v-if="myNotesStore.myNotes.length" class="card mt-4">
+      <ul class="list-group list-group-flush">
+        <my-note
+          v-for="myNote of myNotesStore.myNotes"
+          :key="myNote.id"
+          :id="myNote.id"
+          :title="myNote.title"
+          :text="myNote.text"
+          :date="myNote.date"
+        ></my-note>
+      </ul>
     </div>
   </div>
 </template>

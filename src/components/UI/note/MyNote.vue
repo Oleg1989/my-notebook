@@ -1,17 +1,15 @@
 <template>
-  <div class="card w-100 mt-4">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-7">
-          <h5 class="card-title">{{ title }}</h5>
-        </div>
-        <div class="col-5 text-end">
-          <time class="fw-lighter">{{ date }}</time>
-        </div>
+  <li class="list-group-item" :id="id">
+    <div class="row align-items-center">
+      <div class="col-7">
+        <h5 class="card-title">{{ title }}</h5>
       </div>
-      <p class="card-text">{{ text }}</p>
+      <div class="col-5 text-end">
+        <time class="fw-lighter">{{ date }}</time>
+      </div>
     </div>
-    <div class="d-flex justify-content-end m-2">
+    <p class="card-text">{{ text }}</p>
+    <div class="d-flex justify-content-end">
       <my-note-change-button
         :id="id"
         :inputTitle="title"
@@ -24,7 +22,7 @@
         :deleteButtonTitle="`Delete note?`"
       ></my-delete-button>
     </div>
-  </div>
+  </li>
 </template>
 <script>
 import { useMyNotesStore } from '@/stores/myNotesStore'
