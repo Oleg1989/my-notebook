@@ -17,7 +17,7 @@
       </div>
     </div>
     <div v-if="myNotesStore.myNotes.length" class="card mt-4">
-      <ul class="list-group list-group-flush">
+      <TransitionGroup name="note" tag="ul" class="list-group list-group-flush">
         <my-note
           v-for="myNote of myNotesStore.myNotes"
           :key="myNote.id"
@@ -26,7 +26,7 @@
           :text="myNote.text"
           :date="myNote.date"
         ></my-note>
-      </ul>
+      </TransitionGroup>
     </div>
   </div>
 </template>
@@ -35,4 +35,14 @@ import { useMyNotesStore } from '@/stores/myNotesStore'
 
 const myNotesStore = useMyNotesStore()
 </script>
-<style></style>
+<style>
+.note-enter-active,
+.note-leave-active {
+  transition: all 0.4s ease;
+}
+.note-enter-from,
+.note-leave-to {
+  opacity: 0;
+  transform: translateX(200px);
+}
+</style>

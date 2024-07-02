@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light shadow p-3 m-2 bg-body rounded">
+  <nav class="navbar sticky-top navbar-expand-lg bg-light shadow p-3 m-2 bg-body rounded">
     <div class="container">
       <router-link to="/" class="navbar-brand fs-2 text-uppercase link-primary fw-bolder"
         >My notebook</router-link

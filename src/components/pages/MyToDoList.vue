@@ -18,7 +18,7 @@
       </div>
     </div>
     <div v-if="myToDoListsStore.myToDoLists.length" class="card mt-4">
-      <ul class="list-group list-group-flush">
+      <TransitionGroup name="list" tag="ul" class="list-group list-group-flush">
         <my-to-do
           v-for="myToDo of myToDoListsStore.myToDoLists"
           :key="myToDo.id"
@@ -26,7 +26,7 @@
           :title="myToDo.title"
           :is-checked="myToDo.isChecked"
         ></my-to-do>
-      </ul>
+      </TransitionGroup>
     </div>
   </div>
 </template>
@@ -35,4 +35,14 @@ import { useMyToDoListsStore } from '@/stores/myToDoListsStore'
 
 const myToDoListsStore = useMyToDoListsStore()
 </script>
-<style></style>
+<style>
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.4s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(200px);
+}
+</style>

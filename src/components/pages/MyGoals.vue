@@ -17,7 +17,7 @@
       </div>
     </div>
     <div v-if="myGoalsStore.myGoals.length" class="card mt-4">
-      <ul class="list-group list-group-flush">
+      <TransitionGroup name="goal" tag="ul" class="list-group list-group-flush">
         <my-goal
           v-for="myGoal of myGoalsStore.myGoals"
           :key="myGoal.id"
@@ -26,7 +26,7 @@
           :date="myGoal.date"
           :is-checked="myGoal.isChecked"
         ></my-goal>
-      </ul>
+      </TransitionGroup>
     </div>
   </div>
 </template>
@@ -35,4 +35,14 @@ import { useMyGoalsStore } from '@/stores/myGoalsStore'
 
 const myGoalsStore = useMyGoalsStore()
 </script>
-<style></style>
+<style>
+.goal-enter-active,
+.goal-leave-active {
+  transition: all 0.4s ease;
+}
+.goal-enter-from,
+.goal-leave-to {
+  opacity: 0;
+  transform: translateX(200px);
+}
+</style>
