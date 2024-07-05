@@ -2,10 +2,36 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { VitePWA } from 'vite-plugin-pwa'
+
+const vitePWA = VitePWA({
+  registerType: 'autoUpdate',
+  outDir: 'dist',
+  manifest: {
+    name: 'My notebook PWA',
+    short_name: 'My-notebook',
+    description: 'My educational project PWA',
+    display: 'standalone',
+    orientation: 'portrait-primary',
+    theme_color: '#ffffff',
+    icons: [
+      {
+        src: 'favicons/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png'
+      },
+      {
+        src: 'favicons/android-chrome-256x256.png',
+        sizes: '256x256',
+        type: 'image/png'
+      }
+    ]
+  }
+})
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), vitePWA],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

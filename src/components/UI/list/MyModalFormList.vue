@@ -6,6 +6,7 @@
       class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#modalList"
+      @click="inputFocus"
     >
       New to-do
     </button>
@@ -41,6 +42,7 @@
                   id="floatingText"
                   placeholder="Text"
                   required
+                  ref="input"
                 />
                 <label for="floatingText">Description to-do</label>
                 <div v-if="!title.length" id="validationServer03Feedback" class="invalid-feedback">
@@ -82,6 +84,11 @@ export default {
     const myToDoListsStore = useMyToDoListsStore()
 
     const title = ref('')
+    const input = ref(null)
+
+    const inputFocus = () => {
+      input.value.focus()
+    }
 
     const createToDo = () => {
       myToDoListsStore.addToDo(title.value)
@@ -89,8 +96,10 @@ export default {
     }
     return {
       title,
+      input,
       myToDoListsStore,
-      createToDo
+      createToDo,
+      inputFocus
     }
   }
 }

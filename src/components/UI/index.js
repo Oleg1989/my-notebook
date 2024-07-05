@@ -10,7 +10,7 @@ import MyListChangeButton from '@/components/UI/list/MyListChangeButton.vue'
 import MyNoteChangeButton from '@/components/UI/note/MyNoteChangeButton.vue'
 import MyGoalChangeButton from '@/components/UI/goal/MyGoalChangeButton.vue'
 
-export default {
+export default [
   MyNavbar,
   MyModalFormList,
   MyToDo,
@@ -22,4 +22,4 @@ export default {
   MyListChangeButton,
   MyNoteChangeButton,
   MyGoalChangeButton
-}
+]
