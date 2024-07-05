@@ -11,17 +11,15 @@ const vitePWA = VitePWA({
     name: 'My notebook PWA',
     short_name: 'My-notebook',
     description: 'My educational project PWA',
-    display: 'standalone',
-    orientation: 'portrait-primary',
     theme_color: '#ffffff',
     icons: [
       {
-        src: 'favicons/android-chrome-192x192.png',
+        src: '/assets/favicons/android-chrome-192x192.png',
         sizes: '192x192',
         type: 'image/png'
       },
       {
-        src: 'favicons/android-chrome-256x256.png',
+        src: '/assets/favicons/android-chrome-256x256.png',
         sizes: '256x256',
         type: 'image/png'
       }
