@@ -6,7 +6,6 @@
       class="btn btn-primary"
       data-bs-toggle="modal"
       data-bs-target="#modalList"
-      @click="inputFocus"
     >
       New to-do
     </button>
@@ -77,7 +76,7 @@
 </template>
 <script>
 import { useMyToDoListsStore } from '@/stores/myToDoListsStore'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 export default {
   name: 'my-modal-form-list',
   setup() {
@@ -86,20 +85,22 @@ export default {
     const title = ref('')
     const input = ref(null)
 
-    const inputFocus = () => {
-      input.value.focus()
-    }
-
     const createToDo = () => {
       myToDoListsStore.addToDo(title.value)
       title.value = ''
     }
+
+    onMounted(() => {
+      const myModalEl = document.getElementById('modalList')
+      myModalEl.addEventListener('shown.bs.modal', function () {
+        input.value.focus()
+      })
+    })
     return {
       title,
       input,
       myToDoListsStore,
-      createToDo,
-      inputFocus
+      createToDo
     }
   }
 }

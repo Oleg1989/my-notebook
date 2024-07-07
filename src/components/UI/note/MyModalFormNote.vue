@@ -35,6 +35,7 @@
             <div class="modal-body">
               <div class="form-floating mb-3">
                 <input
+                  ref="input"
                   v-model="title"
                   type="text"
                   class="form-control is-invalid"
@@ -90,7 +91,7 @@
 </template>
 <script>
 import { useMyNotesStore } from '@/stores/myNotesStore'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 export default {
   name: 'my-modal-form-note',
@@ -99,6 +100,8 @@ export default {
 
     const title = ref('')
     const text = ref('')
+    const input = ref(null)
+
     const largeSize = ref({
       height: 200 + 'px'
     })
@@ -120,9 +123,17 @@ export default {
       reset()
     }
 
+    onMounted(() => {
+      const myModalEl = document.getElementById('modalNote')
+      myModalEl.addEventListener('shown.bs.modal', function () {
+        input.value.focus()
+      })
+    })
+
     return {
       title,
       text,
+      input,
       largeSize,
       smallSize,
       myNotesStore,

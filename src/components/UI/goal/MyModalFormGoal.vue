@@ -48,6 +48,7 @@
               </div>
               <div class="form-floating">
                 <input
+                  ref="input"
                   v-model="title"
                   type="text"
                   class="form-control is-invalid"
@@ -88,7 +89,7 @@
 </template>
 <script>
 import { useMyGoalsStore } from '@/stores/myGoalsStore'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 export default {
   name: 'my-modal-form-goal',
@@ -97,6 +98,7 @@ export default {
 
     const title = ref('')
     const date = ref('')
+    const input = ref(null)
 
     const reset = () => {
       title.value = ''
@@ -111,9 +113,18 @@ export default {
       myGoalsStore.addGoal(newGoal)
       reset()
     }
+
+    onMounted(() => {
+      const myModalEl = document.getElementById('modalGoal')
+      myModalEl.addEventListener('shown.bs.modal', function () {
+        input.value.focus()
+      })
+    })
+
     return {
       title,
       date,
+      input,
       myGoalsStore,
       createGoal,
       reset
