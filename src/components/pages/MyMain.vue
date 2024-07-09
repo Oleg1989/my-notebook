@@ -7,13 +7,13 @@
       >
     </p>
     <p class="fs-2 text-center">
-      <router-link to="myLists" class="nav-link text-uppercase" aria-current="page"
+      <router-link to="myNotes" class="nav-link text-uppercase" aria-current="page"
         >Total my notes:
         <span class="text-primary">{{ myNotesStore.myNotes.length }}</span></router-link
       >
     </p>
     <p class="fs-2 text-center">
-      <router-link to="myLists" class="nav-link text-uppercase" aria-current="page"
+      <router-link to="myGoals" class="nav-link text-uppercase" aria-current="page"
         >Total my goals:
         <span class="text-primary">{{ myGoalsStore.myGoals.length }}</span></router-link
       >
