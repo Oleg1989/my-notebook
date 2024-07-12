@@ -11,6 +11,8 @@ describe('My notes store', () => {
     const myNotesStore = useMyNotesStore()
 
     expect(myNotesStore.myNotes).toEqual([])
+
+    myNotesStore.myNotes.length = 0
   })
 
   test('that the myNotes add note', () => {
@@ -20,14 +22,19 @@ describe('My notes store', () => {
 
     expect(myNotesStore.myNotes).not.toEqual([])
     expect(myNotesStore.myNotes.length).toBe(1)
+
+    myNotesStore.myNotes.length = 0
   })
 
   test('that the myNotes delete note', () => {
     const myNotesStore = useMyNotesStore()
 
+    myNotesStore.addNote({ title: 'First note', text: 'Note text' })
     myNotesStore.deleteNote(myNotesStore.myNotes[0].id)
 
     expect(myNotesStore.myNotes).toEqual([])
+
+    myNotesStore.myNotes.length = 0
   })
 
   test('that the myNotes update note', () => {
@@ -43,5 +50,7 @@ describe('My notes store', () => {
 
     expect(myNotesStore.myNotes[0].title).toBe(note.title)
     expect(myNotesStore.myNotes[0].text).toBe(note.text)
+
+    myNotesStore.myNotes.length = 0
   })
 })

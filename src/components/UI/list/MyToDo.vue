@@ -42,6 +42,7 @@ export default {
   },
   setup() {
     const myToDoListsStore = useMyToDoListsStore()
+
     return {
       myToDoListsStore
     }

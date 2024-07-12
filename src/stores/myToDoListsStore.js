@@ -1,11 +1,10 @@
-import { ref, watch } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 import { defineStore } from 'pinia'
-import { getData } from '@/stores/helper.js'
 
 export const useMyToDoListsStore = defineStore('myToDoLists', () => {
-  const myToDoLists = ref(getData('lists'))
+  const myToDoLists = ref([])
 
-  // const getLengthMyToDoLists = computed(() => myToDoLists.value.length)
+  const getLengthMyToDoLists = computed(() => myToDoLists.value.length)
 
   const addToDo = (title) => {
     const newToDo = {
@@ -37,11 +36,24 @@ export const useMyToDoListsStore = defineStore('myToDoLists', () => {
   }
 
   watch(
-    () => myToDoLists,
+    myToDoLists,
     (state) => {
       localStorage.setItem('lists', JSON.stringify(state))
     },
     { deep: true }
   )
-  return { myToDoLists, addToDo, checkedToDo, deleteToDo, updateToDo }
+
+  onMounted(() => {
+    const dataString = JSON.parse(localStorage.getItem('lists'))
+    if (dataString) myToDoLists.value = dataString
+  })
+
+  return {
+    myToDoLists,
+    getLengthMyToDoLists,
+    addToDo,
+    checkedToDo,
+    deleteToDo,
+    updateToDo
+  }
 })

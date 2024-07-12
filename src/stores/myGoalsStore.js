@@ -1,11 +1,10 @@
-import { ref, watch } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 import { defineStore } from 'pinia'
-import { getData } from '@/stores/helper.js'
 
 export const useMyGoalsStore = defineStore('myGoals', () => {
-  const myGoals = ref(getData('goals'))
+  const myGoals = ref([])
 
-  // const doubleCount = computed(() => count.value * 2)
+  const getLengthMyGoals = computed(() => myGoals.value.length)
 
   const addGoal = (goalParams) => {
     const newGoal = {
@@ -39,12 +38,17 @@ export const useMyGoalsStore = defineStore('myGoals', () => {
   }
 
   watch(
-    () => myGoals,
+    myGoals,
     (state) => {
       localStorage.setItem('goals', JSON.stringify(state))
     },
     { deep: true }
   )
 
-  return { myGoals, addGoal, checkedGoal, deleteGoal, updateGoal }
+  onMounted(() => {
+    const dataString = JSON.parse(localStorage.getItem('goals'))
+    if (dataString) myGoals.value = dataString
+  })
+
+  return { myGoals, getLengthMyGoals, addGoal, checkedGoal, deleteGoal, updateGoal }
 })

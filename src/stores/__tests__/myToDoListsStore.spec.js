@@ -11,6 +11,8 @@ describe('My to-do lists store', () => {
     const myToDoListsStore = useMyToDoListsStore()
 
     expect(myToDoListsStore.myToDoLists).toEqual([])
+
+    myToDoListsStore.myToDoLists.length = 0
   })
 
   test('that the myToDoLists add to-do', () => {
@@ -20,22 +22,30 @@ describe('My to-do lists store', () => {
 
     expect(myToDoListsStore.myToDoLists).not.toEqual([])
     expect(myToDoListsStore.myToDoLists.length).toBe(1)
+
+    myToDoListsStore.myToDoLists.length = 0
   })
 
   test('that the myToDoLists check to-do', () => {
     const myToDoListsStore = useMyToDoListsStore()
 
+    myToDoListsStore.addToDo('First to-do!')
     myToDoListsStore.checkedToDo(myToDoListsStore.myToDoLists[0].id)
 
     expect(myToDoListsStore.myToDoLists[0].isChecked).toBe(true)
+
+    myToDoListsStore.myToDoLists.length = 0
   })
 
   test('that the myToDoLists delete to-do', () => {
     const myToDoListsStore = useMyToDoListsStore()
 
+    myToDoListsStore.addToDo('First to-do!')
     myToDoListsStore.deleteToDo(myToDoListsStore.myToDoLists[0].id)
 
     expect(myToDoListsStore.myToDoLists).toEqual([])
+
+    myToDoListsStore.myToDoLists.length = 0
   })
 
   test('that the myToDoLists update to-do', () => {
@@ -49,6 +59,8 @@ describe('My to-do lists store', () => {
     myToDoListsStore.updateToDo(toDo)
 
     expect(myToDoListsStore.myToDoLists[0].title).toBe(toDo.title)
+
+    myToDoListsStore.myToDoLists.length = 0
   })
 })
 

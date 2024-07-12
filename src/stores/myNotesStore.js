@@ -1,14 +1,10 @@
-import { ref, watch } from 'vue'
+import { ref, watch, computed, onMounted } from 'vue'
 import { defineStore } from 'pinia'
-import { getData } from '@/stores/helper.js'
 
 export const useMyNotesStore = defineStore('myNotes', () => {
-  const myNotes = ref(getData('notes'))
+  const myNotes = ref([])
 
-  // const doubleCount = computed(() => count.value * 2)
-  // function increment() {
-  //   count.value++
-  // }
+  const getLengthMyNotes = computed(() => myNotes.value.length)
 
   const addNote = (note) => {
     const newNote = {
@@ -43,12 +39,17 @@ export const useMyNotesStore = defineStore('myNotes', () => {
   }
 
   watch(
-    () => myNotes,
+    myNotes,
     (state) => {
       localStorage.setItem('notes', JSON.stringify(state))
     },
     { deep: true }
   )
 
-  return { myNotes, addNote, deleteNote, updateNote }
+  onMounted(() => {
+    const dataString = JSON.parse(localStorage.getItem('notes'))
+    if (dataString) myNotes.value = dataString
+  })
+
+  return { myNotes, getLengthMyNotes, addNote, deleteNote, updateNote }
 })
