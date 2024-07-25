@@ -7,7 +7,7 @@
       data-bs-toggle="modal"
       data-bs-target="#modalGoal"
     >
-      New goal
+      {{ $t('buttons.newGoal') }}
     </button>
 
     <!-- Modal -->
@@ -22,7 +22,7 @@
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalLabelGoal">New goal</h5>
+            <h5 class="modal-title" id="modalLabelGoal">{{ $t('formTitle.newGoal') }}</h5>
             <button
               type="button"
               class="btn-close"
@@ -43,7 +43,7 @@
                   required
                 />
                 <div v-if="!date.length" id="validationServer03Feedback" class="invalid-feedback">
-                  Please select a date!
+                  {{ $t('validationFeedback.inputDate') }}
                 </div>
               </div>
               <div class="form-floating">
@@ -56,9 +56,9 @@
                   placeholder="Goal"
                   required
                 />
-                <label for="floatingGoal">Description goal</label>
+                <label for="floatingGoal">{{ $t('labels.inputGoal') }}</label>
                 <div v-if="!title.length" id="validationServer03Feedback" class="invalid-feedback">
-                  Please fill in the field!
+                  {{ $t('validationFeedback.inputText') }}
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@
                 data-bs-dismiss="modal"
                 @click="reset"
               >
-                Close
+                {{ $t('buttons.close') }}
               </button>
               <button
                 type="button"
@@ -78,7 +78,7 @@
                 :disabled="!title.length || !date.length"
                 @click="createGoal"
               >
-                Add goal
+                {{ $t('buttons.addGoal') }}
               </button>
             </div>
           </form>

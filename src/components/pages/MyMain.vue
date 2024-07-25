@@ -2,19 +2,19 @@
   <div class="container text-secondary">
     <p class="fs-2 text-center">
       <router-link to="myLists" class="nav-link text-uppercase" aria-current="page"
-        >Total my to-do:
+        >{{ $t('main.to-do') }}
         <span class="text-primary">{{ myToDoListsStore.getLengthMyToDoLists }}</span></router-link
       >
     </p>
     <p class="fs-2 text-center">
       <router-link to="myNotes" class="nav-link text-uppercase" aria-current="page"
-        >Total my notes:
+        >{{ $t('main.notes') }}
         <span class="text-primary">{{ myNotesStore.getLengthMyNotes }}</span></router-link
       >
     </p>
     <p class="fs-2 text-center">
       <router-link to="myGoals" class="nav-link text-uppercase" aria-current="page"
-        >Total my goals:
+        >{{ $t('main.goals') }}
         <span class="text-primary">{{ myGoalsStore.getLengthMyGoals }}</span></router-link
       >
     </p>

@@ -14,12 +14,12 @@
         :id="id"
         :inputTitle="title"
         :inputText="text"
-        :changeButtonTitle="`Change note?`"
+        :changeButtonTitle="$t('formTitle.changeNote')"
       ></my-note-change-button>
       <my-delete-button
         :id="id"
         :deleteElement="myNotesStore.deleteNote"
-        :deleteButtonTitle="`Delete note?`"
+        :deleteButtonTitle="$t('formTitle.deleteNote')"
       ></my-delete-button>
     </div>
   </li>
@@ -43,4 +43,8 @@ export default {
   }
 }
 </script>
-<style></style>
+<style>
+p {
+  white-space: pre-wrap;
+}
+</style>

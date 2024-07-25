@@ -1,7 +1,7 @@
 <template>
   <li class="list-group-item" :id="id">
     <h6 class="fs-6 text-danger">
-      Execute to - <time>{{ date }}</time>
+      {{ $t('executeTo') }} <time>{{ date }}</time>
     </h6>
     <div class="align-items-center">
       <div class="row align-items-center">
@@ -23,12 +23,12 @@
           :id="id"
           :inputDate="date"
           :inputTitle="title"
-          :changeButtonTitle="`Change goal?`"
+          :changeButtonTitle="$t('formTitle.changeGoal')"
         ></my-goal-change-button>
         <my-delete-button
           :id="id"
           :deleteElement="myGoalsStore.deleteGoal"
-          :deleteButtonTitle="`Delete goal?`"
+          :deleteButtonTitle="$t('formTitle.deleteGoal')"
         ></my-delete-button>
       </div>
     </div>

@@ -7,7 +7,7 @@
       data-bs-toggle="modal"
       :data-bs-target="'#deleteModal' + id"
     >
-      Delete
+      {{ $t('buttons.delete') }}
     </button>
 
     <!-- Modal -->
@@ -32,14 +32,16 @@
             ></button>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              {{ $t('buttons.close') }}
+            </button>
             <button
               type="button"
               class="btn btn-danger"
               data-bs-dismiss="modal"
               @click="deleteElement(id)"
             >
-              Delete
+              {{ $t('buttons.delete') }}
             </button>
           </div>
         </div>

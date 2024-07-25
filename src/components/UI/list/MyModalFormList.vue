@@ -7,7 +7,7 @@
       data-bs-toggle="modal"
       data-bs-target="#modalList"
     >
-      New to-do
+      {{ $t('buttons.newToDo') }}
     </button>
 
     <!-- Modal -->
@@ -22,7 +22,7 @@
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="ModalLabelList">New to-do</h5>
+            <h5 class="modal-title" id="ModalLabelList">{{ $t('formTitle.newToDo') }}</h5>
             <button
               type="button"
               class="btn-close"
@@ -43,9 +43,9 @@
                   required
                   ref="input"
                 />
-                <label for="floatingText">Description to-do</label>
+                <label for="floatingText">{{ $t('labels.inputToDo') }}</label>
                 <div v-if="!title.length" id="validationServer03Feedback" class="invalid-feedback">
-                  Please fill in the field!
+                  {{ $t('validationFeedback.inputText') }}
                 </div>
               </div>
             </div>
@@ -56,7 +56,7 @@
                 data-bs-dismiss="modal"
                 @click="() => (title = '')"
               >
-                Close
+                {{ $t('buttons.close') }}
               </button>
               <button
                 type="button"
@@ -65,7 +65,7 @@
                 :disabled="!title.length"
                 @click="createToDo"
               >
-                Add to-do
+                {{ $t('buttons.addToDo') }}
               </button>
             </div>
           </form>

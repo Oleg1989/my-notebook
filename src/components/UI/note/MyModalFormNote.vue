@@ -7,7 +7,7 @@
       data-bs-toggle="modal"
       data-bs-target="#modalNote"
     >
-      New note
+      {{ $t('buttons.newNote') }}
     </button>
 
     <!-- Modal -->
@@ -22,7 +22,7 @@
       <div @click.stop class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalLabelNote">New note</h5>
+            <h5 class="modal-title" id="modalLabelNote">{{ $t('formTitle.newNote') }}</h5>
             <button
               type="button"
               class="btn-close"
@@ -43,9 +43,9 @@
                   placeholder="Title"
                   required
                 />
-                <label for="floatingTitle">Title</label>
+                <label for="floatingTitle">{{ $t('labels.inputNoteTitle') }}</label>
                 <div v-if="!title.length" id="validationServer03Feedback" class="invalid-feedback">
-                  Please fill in the field!
+                  {{ $t('validationFeedback.inputText') }}
                 </div>
               </div>
               <div class="form-floating">
@@ -58,9 +58,9 @@
                   :style="text.length ? largeSize : smallSize"
                   required
                 ></textarea>
-                <label for="floatingTextarea2">Description note</label>
+                <label for="floatingTextarea2">{{ $t('labels.inputNote') }}</label>
                 <div v-if="!text.length" id="validationServer03Feedback" class="invalid-feedback">
-                  Please fill in the field!
+                  {{ $t('validationFeedback.inputText') }}
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 data-bs-dismiss="modal"
                 @click="reset()"
               >
-                Close
+                {{ $t('buttons.close') }}
               </button>
               <button
                 type="button"
@@ -80,7 +80,7 @@
                 :disabled="!title.length || !text.length"
                 @click="createNote"
               >
-                Add note
+                {{ $t('buttons.addNode') }}
               </button>
             </div>
           </form>

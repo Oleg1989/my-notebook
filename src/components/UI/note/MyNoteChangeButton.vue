@@ -7,7 +7,7 @@
       data-bs-toggle="modal"
       :data-bs-target="'#changeModal' + id"
     >
-      Change
+      {{ $t('buttons.change') }}
     </button>
 
     <!-- Modal -->
@@ -40,13 +40,13 @@
                   placeholder="Text"
                   required
                 />
-                <label :for="'floatingText' + id">Title</label>
+                <label :for="'floatingText' + id">{{ $t('labels.inputNoteTitle') }}</label>
                 <div
                   v-if="!title.length"
                   :id="'validationServer03Feedback' + id"
                   class="invalid-feedback"
                 >
-                  Please fill in the field!
+                  {{ $t('validationFeedback.inputText') }}
                 </div>
               </div>
               <div class="form-floating">
@@ -63,12 +63,14 @@
                   :id="'validationServer03Feedback' + id"
                   class="invalid-feedback"
                 >
-                  Please fill in the field!
+                  {{ $t('validationFeedback.inputText') }}
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                {{ $t('buttons.close') }}
+              </button>
               <button
                 type="button"
                 class="btn btn-primary"
@@ -76,7 +78,7 @@
                 :disabled="!title.length"
                 @click.stop="update()"
               >
-                Update note
+                {{ $t('buttons.updateNode') }}
               </button>
             </div>
           </form>

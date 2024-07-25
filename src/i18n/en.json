@@ -1,0 +1,61 @@
+{
+  "navbar": {
+    "title": "My notebook",
+    "list": "My to-do list",
+    "notes": "My notes",
+    "goals": "My goals"
+  },
+  "main": {
+    "to-do": "Total count my to-do:",
+    "notes": "Total count my notes:",
+    "goals": "Total count my goals:"
+  },
+  "list": {
+    "title": "My to-do list!",
+    "titleEmpty": "My to-do list is empty!"
+  },
+  "notes": {
+    "title": "My list notes!",
+    "titleEmpty": "My list notes is empty!"
+  },
+  "goals": {
+    "title": "My list goals!",
+    "titleEmpty": "My list goals is empty!"
+  },
+  "buttons": {
+    "newToDo": "New to-do",
+    "newNote": "New note",
+    "newGoal": "New goal",
+    "change": "Change",
+    "delete": "Delete",
+    "close": "Close",
+    "addToDo": "Add to-do",
+    "addNode": "Add note",
+    "addGoal": "Add goal",
+    "updateToDo": "Update to-do",
+    "updateNode": "Update note",
+    "updateGoal": "Update goal"
+  },
+  "formTitle": {
+    "newToDo": "New to-do",
+    "newNote": "New note",
+    "newGoal": "New goal",
+    "changeToDo": "Change to-do?",
+    "changeNote": "Change note?",
+    "changeGoal": "Change goals?",
+    "deleteToDo": "Delete to-do?",
+    "deleteNote": "Delete note?",
+    "deleteGoal": "Delete goal?"
+  },
+  "labels": {
+    "inputToDo": "Description to-do",
+    "inputNoteTitle": "Title",
+    "inputNote": "Description note",
+    "inputGoal": "Description goal"
+  },
+  "validationFeedback": {
+    "inputDate": "Please select a date!",
+    "inputText": "Please fill in the field!"
+  },
+  "executeTo": "Execute to - "
+}

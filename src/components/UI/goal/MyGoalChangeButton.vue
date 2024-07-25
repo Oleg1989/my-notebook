@@ -7,7 +7,7 @@
       data-bs-toggle="modal"
       :data-bs-target="'#changeModal' + id"
     >
-      Change
+      {{ $t('buttons.change') }}
     </button>
 
     <!-- Modal -->
@@ -41,7 +41,7 @@
                   required
                 />
                 <div v-if="!date.length" id="validationServer03Feedback" class="invalid-feedback">
-                  Please select a date!
+                  {{ $t('validationFeedback.inputDate') }}
                 </div>
               </div>
               <div class="form-floating">
@@ -53,18 +53,20 @@
                   placeholder="Text"
                   required
                 />
-                <label :for="'floatingText' + id">Description goal</label>
+                <label :for="'floatingText' + id">{{ $t('labels.inputGoal') }}</label>
                 <div
                   v-if="!title.length"
                   :id="'validationServer03Feedback' + id"
                   class="invalid-feedback"
                 >
-                  Please fill in the field!
+                  {{ $t('validationFeedback.inputText') }}
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                {{ $t('buttons.close') }}
+              </button>
               <button
                 type="button"
                 class="btn btn-primary"
@@ -72,7 +74,7 @@
                 :disabled="!title.length"
                 @click.stop="update()"
               >
-                Update goal
+                {{ $t('buttons.updateGoal') }}
               </button>
             </div>
           </form>

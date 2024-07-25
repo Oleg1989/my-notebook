@@ -20,12 +20,12 @@
       <my-list-change-button
         :id="id"
         :inputTitle="title"
-        :changeButtonTitle="`Change to-do?`"
+        :changeButtonTitle="$t('formTitle.changeToDo')"
       ></my-list-change-button>
       <my-delete-button
         :id="id"
         :deleteElement="myToDoListsStore.deleteToDo"
-        :deleteButtonTitle="`Delete to-do?`"
+        :deleteButtonTitle="$t('formTitle.deleteToDo')"
       ></my-delete-button>
     </div>
   </li>
